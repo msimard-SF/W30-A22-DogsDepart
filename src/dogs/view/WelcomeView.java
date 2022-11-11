@@ -3,8 +3,11 @@ package dogs.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,10 +16,14 @@ import javax.swing.SwingConstants;
 import dogs.controller.IWelcomeController;
 import util.image.ImageUtil;
 
-public class WelcomeView extends JFrame implements IView {   // Configurer Eclipse pour ignorer les avertissements sur serial Id
+public class WelcomeView extends JFrame implements IView, ActionListener {   // Configurer Eclipse pour ignorer les avertissements sur serial Id
 	
 	private static final String VIEW_TITLE = "Nos amis les chiens";
+	private static final String ADD_DOG_BUTTON_LABEL = "Inscrire un chien";
 	private static final String WELCOME_MESSAGE = "Bienvenue !";
+	private static final String ADD_DOG_BUTTON_ACTION = "ADD_DOG";
+	private static final String LIST_DOG_BUTTON_LABEL = "Liste des chiens...";
+	private static final String LIST_DOG_BUTTON_ACTION = "LIST_DOG";
 	
 	private static final String WELCOME_PICTURE = "../resource/dog.jpg";
 
@@ -71,6 +78,29 @@ public class WelcomeView extends JFrame implements IView {   // Configurer Eclip
 	}
 
 	private void setUpActionPanel() {
+		JPanel actionPanel = new JPanel();
+		this.add(actionPanel, BorderLayout.SOUTH);
+		
+		JButton addDogButton = new JButton(ADD_DOG_BUTTON_LABEL);
+		addDogButton.addActionListener(this);
+		addDogButton.setActionCommand(ADD_DOG_BUTTON_ACTION);
+		actionPanel.add(addDogButton);
+		
+		JButton ListDogButton = new JButton(LIST_DOG_BUTTON_LABEL);
+		ListDogButton.addActionListener(this);
+		ListDogButton.setActionCommand(LIST_DOG_BUTTON_ACTION);
+		actionPanel.add(ListDogButton);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand() == ADD_DOG_BUTTON_ACTION) {
+			System.out.println("Boutton ajouter chien cliqué");
+		}
+		else if(e.getActionCommand() == LIST_DOG_BUTTON_ACTION) {
+			System.out.println("Boutton Liste chien cliqué");
+		}
+		
 	}
 
 
