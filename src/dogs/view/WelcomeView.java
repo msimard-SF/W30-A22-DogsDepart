@@ -95,7 +95,7 @@ public class WelcomeView extends JFrame implements IView, ActionListener {   // 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == ADD_DOG_BUTTON_ACTION) {
-			System.out.println("Boutton ajouter chien cliqué");
+			this.controller.wantToCreateDog();;
 		}
 		else if(e.getActionCommand() == LIST_DOG_BUTTON_ACTION) {
 			System.out.println("Boutton Liste chien cliqué");
