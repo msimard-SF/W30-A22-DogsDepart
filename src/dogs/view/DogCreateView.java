@@ -4,7 +4,6 @@ package dogs.view;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +12,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import dogs.model.DogDTO;
 
 
 
@@ -25,6 +27,8 @@ public class DogCreateView extends JDialog implements IView, ActionListener {
 	private static final String ADD_DOG_ACTION = "incription faire";
 	private static final String TEXT_NAME_DOG = "nom:";
 	private static final String TEXT_RACE_DOG = "race:";
+	private static final String TEXT_THANKS_CREATING_DOG = "Merci d'avoir inscrit votre chien";
+	private static final String NAME_PANEL_THANKS = "Merci";
 	private int a =0;
 	private JLabel Type1 = new JLabel("Nom: ");
     private JLabel Type2 = new JLabel("Race: ");
@@ -101,9 +105,6 @@ public class DogCreateView extends JDialog implements IView, ActionListener {
 	
 	private void addTextField(JPanel panel, String labelText, JTextField textField, JLabel label) {
 		// Pour ajouter successivement une étiquette et une zone de texte au panel
-		if(a == 0) {
-			
-		}
 		label.setText(labelText);
 		panel.add(textField);
 	}
@@ -124,8 +125,10 @@ public class DogCreateView extends JDialog implements IView, ActionListener {
 	}
 	
 	private void createDog() {
-		// afficher seulement un message en console
-		System.out.println(name.getText() + " " + breed.getText());
+		DogDTO dog = new DogDTO(name.getText(), breed.getText(), 0);
+		this.controller.add(dog);
+		JOptionPane.showMessageDialog(null, TEXT_THANKS_CREATING_DOG);
+		this.dispose();
 	}
 
 	@Override

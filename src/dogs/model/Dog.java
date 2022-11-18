@@ -6,7 +6,7 @@ public class Dog {  // La classe est très simple ici mais il pourrait avoir des 
 	private String name;
 	private String breed;  // Idéalement faire une classe Breed (préférer à une enum)
 	
-	public Dog(String name, String breed, String color, int age) {
+	public Dog(String name, String breed, int age) {
 		//TODO: calculer l'id --> un no unique pour identifier un chien
 		this.name = name;
 		this.breed = breed;
